@@ -1,36 +1,46 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 👁️ Vigil: Medical Device Verification Platform
 
-## Getting Started
+Vigil is an AI-powered counterfeit detection and supply-chain verification platform for medical devices. Built with a dark, ultra-fluid aesthetic, it combines advanced multi-modal visual analysis with immutable cryptographic signatures.
 
-First, run the development server:
+![Vigil Preview](https://vigil-jtdbhyt0u-animeshs-projects-f88fd4a0.vercel.app/favicon.ico)
 
-```bash
+## ✨ Core Features
+
+*   **Vertex AI Vision Detections**: Multi-modal object detection that automatically targets UDI barcodes, regulatory marks (CE, FDA), and typography rendering at a sub-pixel level to detect anomalies.
+*   **Gemini 1.5 Forensic Scorecards**: An expert-level LLM synthesizer that evaluates the raw packaging image alongside Vertex AI bounding boxes to produce specific, actionable risk assessments backed by regulatory citations.
+*   **Cloud KMS Attestation**: Every successful verification is run through Google Cloud Key Management Service using an ECDSA P-256 key, establishing a tamper-proof cryptographic attestation signature.
+*   **Next.js Frontend Architecture**: Fluid animations, seamless drag-and-drop file support, and an Alcove-inspired dark design system without heavy lifting.
+
+## 🛠 Tech Stack
+
+*   **Framework**: Next.js (App Router)
+*   **Language**: TypeScript / JavaScript (React)
+*   **AI/ML**: Google Gen AI SDK (`@google/genai`), Vertex AI (`@google-cloud/vision`)
+*   **Security**: Google Cloud KMS (`@google-cloud/kms`)
+*   **Design**: Vanilla CSS & custom SVG layouts
+
+## 🚀 Getting Started
+
+### 1. Configure the Environment
+Copy the `.env.local` template and supply your credentials:
+
+\`\`\`bash
+# 1. Gemini
+GEMINI_API_KEY=your_gemini_api_key_here
+
+# 2. Google Cloud (Minified Service Account JSON)
+GOOGLE_APPLICATION_CREDENTIALS_JSON={"type":"service_account","project_id":"your-project","private_key":"..."}
+
+# 3. KMS Configuration (if overriding defaults)
+GCP_PROJECT_ID=your-project-id
+\`\`\`
+
+### 2. Install and Run
+\`\`\`bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+\`\`\`
+Open [http://localhost:3000](http://localhost:3000) to view the application in your browser.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## 🔒 Security Notice
+Do **NOT** commit your `.env.local` file to version control. This project is configured to safely ignore it by default via `.gitignore`.
